@@ -13,4 +13,9 @@ open class CustomerServiceImpl(@Autowired private val customerRepository: Custom
     override fun getCustomers(): List<CustomerEntity> {
         return customerRepository.getCustomers()
     }
+
+    @Transactional
+    override fun saveCustomer(customerEntity: CustomerEntity) {
+        customerRepository.saveCustomer(customerEntity)
+    }
 }

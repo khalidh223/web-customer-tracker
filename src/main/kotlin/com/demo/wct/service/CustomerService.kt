@@ -4,4 +4,5 @@ import com.demo.wct.entities.CustomerEntity
 
 interface CustomerService {
     fun getCustomers() : List<CustomerEntity>
+    fun saveCustomer(customerEntity: CustomerEntity)
 }

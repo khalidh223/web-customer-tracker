@@ -20,4 +20,11 @@ open class CustomerRepositoryImpl(
         return theQuery.resultList
     }
 
+    override fun saveCustomer(customerEntity: CustomerEntity) {
+
+        val currentSession = sessionFactory.currentSession
+
+        currentSession.save(customerEntity)
+    }
+
 }
