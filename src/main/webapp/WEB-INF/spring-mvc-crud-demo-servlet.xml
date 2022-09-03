@@ -15,7 +15,7 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Add support for component scanning -->
-	<context:component-scan base-package="com.demo.wct.components" />
+	<context:component-scan base-package="com.demo.wct" />
 
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
@@ -65,6 +65,8 @@
     <!-- Step 4: Enable configuration of transactional behavior based on annotations -->
 	<tx:annotation-driven transaction-manager="myTransactionManager" />
 
+	<!-- Add support for reading web resources -->
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
 </beans>
 
 
