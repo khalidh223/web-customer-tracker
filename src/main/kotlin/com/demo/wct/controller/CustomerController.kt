@@ -1,5 +1,6 @@
 package com.demo.wct.controller
 
+import com.demo.wct.entities.CustomerEntity
 import com.demo.wct.repository.CustomerRepository
 import com.demo.wct.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,5 +23,16 @@ class CustomerController(@Autowired private val customerService: CustomerService
         theModel.addAttribute("customers", theCustomers)
 
         return "list-customers"
+    }
+
+    @GetMapping("/addCustomerForm")
+    fun addCustomerForm(theModel: Model) : String {
+
+        // create model attribute to bind form data
+        val theCustomer = CustomerEntity()
+
+        theModel.addAttribute("customer", theCustomer)
+
+        return "customer-form"
     }
 }
