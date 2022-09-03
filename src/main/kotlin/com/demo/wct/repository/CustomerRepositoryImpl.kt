@@ -15,7 +15,7 @@ open class CustomerRepositoryImpl(
         // get the current hibernate session
         val currentSession = sessionFactory.currentSession
         // create a query
-        val theQuery = currentSession.createQuery("FROM CustomerEntity", CustomerEntity::class.java)
+        val theQuery = currentSession.createQuery("FROM CustomerEntity ORDER BY lastName", CustomerEntity::class.java)
         // execute query and get result list & return results
         return theQuery.resultList
     }
