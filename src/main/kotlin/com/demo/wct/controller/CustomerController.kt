@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
 @RequestMapping("/customers")
@@ -32,6 +33,16 @@ class CustomerController(@Autowired private val customerService: CustomerService
 
         // create model attribute to bind form data
         val theCustomer = CustomerEntity()
+
+        theModel.addAttribute("customer", theCustomer)
+
+        return "customer-form"
+    }
+
+    @GetMapping("/updateCustomerForm")
+    fun updateCustomerForm(@RequestParam("customerId") customerId: Long, theModel: Model) : String {
+
+        val theCustomer = customerService.getCustomerById(customerId)
 
         theModel.addAttribute("customer", theCustomer)
 

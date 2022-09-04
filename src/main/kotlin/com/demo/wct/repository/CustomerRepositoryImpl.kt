@@ -11,7 +11,6 @@ open class CustomerRepositoryImpl(
 ) : CustomerRepository {
 
     override fun getCustomers(): List<CustomerEntity> {
-
         // get the current hibernate session
         val currentSession = sessionFactory.currentSession
         // create a query
@@ -21,10 +20,15 @@ open class CustomerRepositoryImpl(
     }
 
     override fun saveCustomer(customerEntity: CustomerEntity) {
-
         val currentSession = sessionFactory.currentSession
 
         currentSession.save(customerEntity)
+    }
+
+    override fun getCustomerById(customerId: Long): CustomerEntity {
+        val currentSession = sessionFactory.currentSession
+
+        return currentSession.get(CustomerEntity::class.java, customerId)
     }
 
 }

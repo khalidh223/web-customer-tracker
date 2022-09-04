@@ -30,7 +30,7 @@
             </tr>
             <%-- loop over and print customers --%>
             <c:forEach var="tempCustomer" items="${customers}">
-                <c:url var="updateLink" value="/customer/updateCustomerForm">
+                <c:url var="updateLink" value="/customers/updateCustomerForm">
                     <c:param name="customerId" value="${tempCustomer.id}"/>
                 </c:url>
                 <tr>
