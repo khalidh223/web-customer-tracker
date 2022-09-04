@@ -22,7 +22,7 @@ open class CustomerRepositoryImpl(
     override fun saveCustomer(customerEntity: CustomerEntity) {
         val currentSession = sessionFactory.currentSession
 
-        currentSession.save(customerEntity)
+        currentSession.saveOrUpdate(customerEntity)
     }
 
     override fun getCustomerById(customerId: Long): CustomerEntity {
