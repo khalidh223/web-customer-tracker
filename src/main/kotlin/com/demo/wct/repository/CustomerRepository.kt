@@ -7,4 +7,5 @@ interface CustomerRepository {
     fun saveCustomer(customerEntity: CustomerEntity)
     fun getCustomerById(customerId: Long): CustomerEntity
     fun deleteCustomer(customerId: Long)
+    fun searchCustomers(theSearchName: String) : List<CustomerEntity>
 }
