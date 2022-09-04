@@ -31,4 +31,14 @@ open class CustomerRepositoryImpl(
         return currentSession.get(CustomerEntity::class.java, customerId)
     }
 
+    override fun deleteCustomer(customerId: Long) {
+        val currentSession = sessionFactory.currentSession
+
+        val theQuery = currentSession.createQuery("DELETE from CustomerEntity where id=:customerId")
+
+        theQuery.setParameter("customerId", customerId)
+
+        theQuery.executeUpdate()
+    }
+
 }

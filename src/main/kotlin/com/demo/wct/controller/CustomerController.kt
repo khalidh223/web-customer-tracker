@@ -56,4 +56,12 @@ class CustomerController(@Autowired private val customerService: CustomerService
 
         return "redirect:/customers/list"
     }
+
+    @GetMapping("/delete")
+    fun deleteCustomer(@RequestParam("customerId") customerId: Long) : String {
+
+        customerService.deleteCustomer(customerId)
+
+        return "redirect:/customers/list"
+    }
 }

@@ -23,4 +23,9 @@ open class CustomerServiceImpl(@Autowired private val customerRepository: Custom
     override fun getCustomerById(customerId: Long): CustomerEntity {
         return customerRepository.getCustomerById(customerId)
     }
+
+    @Transactional
+    override fun deleteCustomer(customerId: Long) {
+        return customerRepository.deleteCustomer(customerId)
+    }
 }
