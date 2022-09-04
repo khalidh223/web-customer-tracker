@@ -18,4 +18,9 @@ open class CustomerServiceImpl(@Autowired private val customerRepository: Custom
     override fun saveCustomer(customerEntity: CustomerEntity) {
         customerRepository.saveCustomer(customerEntity)
     }
+
+    @Transactional
+    override fun getCustomerById(customerId: Long): CustomerEntity {
+        return customerRepository.getCustomerById(customerId)
+    }
 }
