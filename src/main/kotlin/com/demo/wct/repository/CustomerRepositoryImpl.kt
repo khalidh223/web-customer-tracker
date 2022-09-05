@@ -2,6 +2,7 @@ package com.demo.wct.repository
 
 import com.demo.wct.entities.CustomerEntity
 import org.hibernate.SessionFactory
+import org.hibernate.query.Query
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -39,6 +40,24 @@ open class CustomerRepositoryImpl(
         theQuery.setParameter("customerId", customerId)
 
         theQuery.executeUpdate()
+    }
+
+    override fun searchCustomers(theSearchName: String): List<CustomerEntity> {
+        val currentSession = sessionFactory.currentSession
+        val theQuery: Query<CustomerEntity>?
+
+        if (theSearchName != null && theSearchName.trim().isNotEmpty()) {
+            theQuery =
+                currentSession.createQuery(
+                    "FROM CustomerEntity WHERE lower(firstName) like :theSearchName or lower(lastName) like :theSearchName",
+                    CustomerEntity::class.java
+                )
+            theQuery.setParameter("theSearchName", "%" + theSearchName.lowercase() + "%")
+        } else {
+            theQuery = currentSession.createQuery("FROM CustomerEntity ORDER BY lastName", CustomerEntity::class.java)
+        }
+
+        return theQuery.resultList
     }
 
 }

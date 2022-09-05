@@ -64,4 +64,14 @@ class CustomerController(@Autowired private val customerService: CustomerService
 
         return "redirect:/customers/list"
     }
+
+    @GetMapping("/search")
+    fun searchCustomers(@RequestParam("theSearchName") theSearchName: String, theModel: Model) : String {
+
+        val theCustomers = customerService.searchCustomers(theSearchName)
+
+        theModel.addAttribute("customers", theCustomers)
+
+        return "list-customers"
+    }
 }
