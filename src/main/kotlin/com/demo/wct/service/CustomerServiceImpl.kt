@@ -9,28 +9,27 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 open class CustomerServiceImpl(@Autowired private val customerRepository: CustomerRepository) : CustomerService {
 
-    @Transactional
     override fun getCustomers(): List<CustomerEntity> {
-        return customerRepository.getCustomers()
+        return customerRepository.findAll()
     }
 
-    @Transactional
-    override fun saveCustomer(customerEntity: CustomerEntity) {
-        customerRepository.saveCustomer(customerEntity)
-    }
-
-    @Transactional
-    override fun getCustomerById(customerId: Long): CustomerEntity {
-        return customerRepository.getCustomerById(customerId)
-    }
-
-    @Transactional
-    override fun deleteCustomer(customerId: Long) {
-        return customerRepository.deleteCustomer(customerId)
-    }
-
-    @Transactional
-    override fun searchCustomers(theSearchName: String): List<CustomerEntity> {
-        return customerRepository.searchCustomers(theSearchName)
-    }
+//    @Transactional
+//    override fun saveCustomer(customerEntity: CustomerEntity) {
+//        customerRepository.saveCustomer(customerEntity)
+//    }
+//
+//    @Transactional
+//    override fun getCustomerById(customerId: Long): CustomerEntity {
+//        return customerRepository.getCustomerById(customerId)
+//    }
+//
+//    @Transactional
+//    override fun deleteCustomer(customerId: Long) {
+//        return customerRepository.deleteCustomer(customerId)
+//    }
+//
+//    @Transactional
+//    override fun searchCustomers(theSearchName: String): List<CustomerEntity> {
+//        return customerRepository.searchCustomers(theSearchName)
+//    }
 }

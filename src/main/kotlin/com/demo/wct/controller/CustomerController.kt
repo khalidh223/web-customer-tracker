@@ -27,51 +27,51 @@ class CustomerController(@Autowired private val customerService: CustomerService
 
         return "list-customers"
     }
-
-    @GetMapping("/addCustomerForm")
-    fun addCustomerForm(theModel: Model) : String {
-
-        // create model attribute to bind form data
-        val theCustomer = CustomerEntity()
-
-        theModel.addAttribute("customer", theCustomer)
-
-        return "customer-form"
-    }
-
-    @GetMapping("/updateCustomerForm")
-    fun updateCustomerForm(@RequestParam("customerId") customerId: Long, theModel: Model) : String {
-
-        val theCustomer = customerService.getCustomerById(customerId)
-
-        theModel.addAttribute("customer", theCustomer)
-
-        return "customer-form"
-    }
-
-    @PostMapping("/saveCustomer")
-    fun saveCustomer(@ModelAttribute("customer") theCustomerEntity: CustomerEntity) : String {
-
-        customerService.saveCustomer(theCustomerEntity)
-
-        return "redirect:/customers/list"
-    }
-
-    @GetMapping("/delete")
-    fun deleteCustomer(@RequestParam("customerId") customerId: Long) : String {
-
-        customerService.deleteCustomer(customerId)
-
-        return "redirect:/customers/list"
-    }
-
-    @GetMapping("/search")
-    fun searchCustomers(@RequestParam("theSearchName") theSearchName: String, theModel: Model) : String {
-
-        val theCustomers = customerService.searchCustomers(theSearchName)
-
-        theModel.addAttribute("customers", theCustomers)
-
-        return "list-customers"
-    }
+//
+//    @GetMapping("/addCustomerForm")
+//    fun addCustomerForm(theModel: Model) : String {
+//
+//        // create model attribute to bind form data
+//        val theCustomer = CustomerEntity()
+//
+//        theModel.addAttribute("customer", theCustomer)
+//
+//        return "customer-form"
+//    }
+//
+//    @GetMapping("/updateCustomerForm")
+//    fun updateCustomerForm(@RequestParam("customerId") customerId: Long, theModel: Model) : String {
+//
+//        val theCustomer = customerService.getCustomerById(customerId)
+//
+//        theModel.addAttribute("customer", theCustomer)
+//
+//        return "customer-form"
+//    }
+//
+//    @PostMapping("/saveCustomer")
+//    fun saveCustomer(@ModelAttribute("customer") theCustomerEntity: CustomerEntity) : String {
+//
+//        customerService.saveCustomer(theCustomerEntity)
+//
+//        return "redirect:/customers/list"
+//    }
+//
+//    @GetMapping("/delete")
+//    fun deleteCustomer(@RequestParam("customerId") customerId: Long) : String {
+//
+//        customerService.deleteCustomer(customerId)
+//
+//        return "redirect:/customers/list"
+//    }
+//
+//    @GetMapping("/search")
+//    fun searchCustomers(@RequestParam("theSearchName") theSearchName: String, theModel: Model) : String {
+//
+//        val theCustomers = customerService.searchCustomers(theSearchName)
+//
+//        theModel.addAttribute("customers", theCustomers)
+//
+//        return "list-customers"
+//    }
 }

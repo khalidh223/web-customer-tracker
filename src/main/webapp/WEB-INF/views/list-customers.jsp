@@ -19,12 +19,12 @@
 <div id="container">
     <div id="content">
 
-        <input type="button" value="Add Customer" onclick="window.location.href='addCustomerForm'; return false"
-               class="add-button"/>
-        <form:form action="search" method="GET">
-            Search customer: <input type="text" name="theSearchName">
-            <input type="submit" value="Search" class="add-button">
-        </form:form>
+<%--        <input type="button" value="Add Customer" onclick="window.location.href='addCustomerForm'; return false"--%>
+<%--               class="add-button"/>--%>
+<%--        <form:form action="search" method="GET">--%>
+<%--            Search customer: <input type="text" name="theSearchName">--%>
+<%--            <input type="submit" value="Search" class="add-button">--%>
+<%--        </form:form>--%>
 
         <table>
             <tr>
@@ -35,21 +35,21 @@
             </tr>
             <%-- loop over and print customers --%>
             <c:forEach var="tempCustomer" items="${customers}">
-                <c:url var="updateLink" value="/customers/updateCustomerForm">
-                    <c:param name="customerId" value="${tempCustomer.id}"/>
-                </c:url>
-                <c:url var="deleteLink" value="/customers/delete">
-                    <c:param name="customerId" value="${tempCustomer.id}"/>
-                </c:url>
+<%--                <c:url var="updateLink" value="/customers/updateCustomerForm">--%>
+<%--                    <c:param name="customerId" value="${tempCustomer.id}"/>--%>
+<%--                </c:url>--%>
+<%--                <c:url var="deleteLink" value="/customers/delete">--%>
+<%--                    <c:param name="customerId" value="${tempCustomer.id}"/>--%>
+<%--                </c:url>--%>
                 <tr>
                     <td>${tempCustomer.firstName}</td>
                     <td>${tempCustomer.lastName}</td>
                     <td>${tempCustomer.email}</td>
-                    <td>
-                        <a href="${updateLink}">Update</a>
-                        |
-                        <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
-                    </td>
+<%--                    <td>--%>
+<%--                        <a href="${updateLink}">Update</a>--%>
+<%--                        |--%>
+<%--                        <a href="${deleteLink}" onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>--%>
+<%--                    </td>--%>
                 </tr>
             </c:forEach>
         </table>

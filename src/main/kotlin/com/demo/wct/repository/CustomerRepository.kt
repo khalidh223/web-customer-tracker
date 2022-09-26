@@ -1,11 +1,8 @@
 package com.demo.wct.repository
 
 import com.demo.wct.entities.CustomerEntity
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
-interface CustomerRepository {
-    fun getCustomers() : List<CustomerEntity>
-    fun saveCustomer(customerEntity: CustomerEntity)
-    fun getCustomerById(customerId: Long): CustomerEntity
-    fun deleteCustomer(customerId: Long)
-    fun searchCustomers(theSearchName: String) : List<CustomerEntity>
-}
+@Repository
+interface CustomerRepository : JpaRepository<CustomerEntity, Long>
